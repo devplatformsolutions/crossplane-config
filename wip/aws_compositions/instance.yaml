@@ -1,0 +1,17 @@
+apiVersion: ec2.aws.upbound.io/v1beta2
+kind: Instance
+metadata:
+  annotations:
+    meta.upbound.io/example-id: ec2/v1beta2/instance
+  labels:
+    testing.upbound.io/example-name: sample-instance
+  name: sample-instance
+spec:
+  forProvider:
+    ami: ami-00a929b66ed6e0de6
+    creditSpecification:
+      cpuCredits: unlimited
+    instanceType: t2.micro
+    region: us-east-1
+  providerConfigRef:
+    name: default
