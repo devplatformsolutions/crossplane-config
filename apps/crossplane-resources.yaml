@@ -7,8 +7,11 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/devplatformsolutions/crossplane-config.git'
-    path: './resources/aws'
+    path: 'resources/aws'
     targetRevision: HEAD
+    directory:
+      recurse: true
+      kustomize: {}
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: crossplane-system
