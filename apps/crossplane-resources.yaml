@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/devplatformsolutions/crossplane-config.git'
-    path: './yaml'
+    path: './resources/aws'
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
