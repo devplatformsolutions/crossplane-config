@@ -1,0 +1,9 @@
+apiVersion: myorg.io/v1alpha1
+kind: EC2DynamoDBInstance
+metadata:
+  name: my-composite-instance
+  annotations:
+    argocd.argoproj.io/sync-wave: "60"
+spec:
+  instanceType: t2.small         # This value will patch the EC2 instance spec.
+  tableName: my-dynamodb-table   # This value will patch the DynamoDB table spec.
