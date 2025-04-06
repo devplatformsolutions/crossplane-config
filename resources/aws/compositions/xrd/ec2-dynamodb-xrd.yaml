@@ -26,6 +26,14 @@ spec:
                 instanceType:
                   type: string
                   description: "The EC2 instance type to provision."
-                tableName:
-                  type: string
-                  description: "The name for the DynamoDB table."
+                # tableName:
+                #   type: string
+                #   description: "The name for the DynamoDB table."
+                # subnetID:
+                #   type: string
+                #   description: "The subnet ID for the EC2 instance."
+                # securityGroupIDs:
+                #   type: array
+                #   items:
+                #     type: string
+                #   description: "The security group IDs for the EC2 instance."

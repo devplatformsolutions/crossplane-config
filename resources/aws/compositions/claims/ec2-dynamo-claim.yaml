@@ -5,5 +5,6 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "60"
 spec:
-  instanceType: t2.small         # This value will patch the EC2 instance spec.
-  tableName: my-dynamodb-table   # This value will patch the DynamoDB table spec.
+  instanceType: t2.small           # For EC2 instance type.
+  # subnetID: subnet-04fd5b30129ffd075  # The ID of the subnet to use.
+  # tableName: my-dynamodb-table     # For the DynamoDB table.
