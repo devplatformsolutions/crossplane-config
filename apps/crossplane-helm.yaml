@@ -17,6 +17,9 @@ spec:
       path: './providers/aws'
       targetRevision: HEAD
     - repoURL: 'https://github.com/devplatformsolutions/crossplane-config.git'
+      path: './resources/aws/config'
+      targetRevision: HEAD
+    - repoURL: 'https://github.com/devplatformsolutions/crossplane-config.git'
       path: './resources/aws/compositions/xrd'
       targetRevision: HEAD
   destination:
