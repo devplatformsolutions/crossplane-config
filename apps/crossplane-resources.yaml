@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: crossplane-app-of-apps
+  name: crossplane-resources
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: 'https://github.com/devplatformsolutions/crossplane-config.git'
-    path: 'apps'
+    path: './yaml'
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: argocd  # Child Applications will be created in the ArgoCD namespace.
+    namespace: crossplane-system
   syncPolicy:
     automated:
       prune: true
