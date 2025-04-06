@@ -1,31 +1,50 @@
 apiVersion: apiextensions.crossplane.io/v1
-kind: CompositeResourceDefinition
+kind: Composition
 metadata:
   name: compositeec2dynamodbinstances.myorg.io
   annotations:
     argocd.argoproj.io/sync-wave: "50"
+    crossplane.io/external-name: compositeec2dynamodbinstances.myorg.io
 spec:
-  group: myorg.io
-  names:
+  compositeTypeRef:
+    apiVersion: myorg.io/v1alpha1
     kind: CompositeEC2DynamoDBInstance
-    plural: compositeec2dynamodbinstances
-  claimNames:
-    kind: EC2DynamoDBInstance
-    plural: ec2dynamodbinstances
-  versions:
-    - name: v1alpha1
-      served: true
-      referenceable: true
-      schema:
-        openAPIV3Schema:
-          type: object
-          properties:
-            spec:
-              type: object
-              properties:
-                instanceType:
-                  type: string
-                  description: "The EC2 instance type to provision."
-                tableName:
-                  type: string
-                  description: "The name for the DynamoDB table."
+  resources:
+    - name: ec2instance
+      base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: Instance
+        spec:
+          forProvider:
+            # A default instance type; will be patched from the composite resource.
+            instanceType: t2.micro
+            # Additional required fields like ami, subnet, security groups, etc., may be needed.
+          providerConfigRef:
+            name: default
+      patches:
+        - type: Field
+          fromFieldPath: "spec.instanceType"
+          toFieldPath: "spec.forProvider.instanceType"
+    - name: dynamodbtable
+      base:
+        apiVersion: dynamodb.aws.upbound.io/v1beta1
+        kind: Table
+        spec:
+          forProvider:
+            # A default table name; will be patched.
+            tableName: default-table
+            attributeDefinitions:
+              - attributeName: id
+                attributeType: S
+            keySchema:
+              - attributeName: id
+                keyType: HASH
+            provisionedThroughput:
+              readCapacityUnits: 5
+              writeCapacityUnits: 5
+          providerConfigRef:
+            name: default
+      patches:
+        - type: Field
+          fromFieldPath: "spec.tableName"
+          toFieldPath: "spec.forProvider.tableName"
