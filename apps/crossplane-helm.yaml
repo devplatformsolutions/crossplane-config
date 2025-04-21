@@ -13,15 +13,15 @@ spec:
     # helm:
     #   valueFiles:
     #     - values.yaml
-    - repoURL: 'https://github.com/devplatformsolutions/crossplane-config.git'
-      path: './providers/aws'
-      targetRevision: HEAD
-    - repoURL: 'https://github.com/devplatformsolutions/crossplane-config.git'
-      path: './resources/aws/config'
-      targetRevision: HEAD
-    - repoURL: 'https://github.com/devplatformsolutions/crossplane-config.git'
-      path: './resources/aws/compositions/xrd'
-      targetRevision: HEAD
+    #- repoURL: 'https://github.com/devplatformsolutions/crossplane-config.git'
+    #  path: './providers/aws'
+    #  targetRevision: HEAD
+    #- repoURL: 'https://github.com/devplatformsolutions/crossplane-config.git'
+    #  path: './resources/aws/config'
+    #  targetRevision: HEAD
+    #- repoURL: 'https://github.com/devplatformsolutions/crossplane-config.git'
+    #  path: './resources/aws/compositions/xrd'
+    #  targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: crossplane-system
