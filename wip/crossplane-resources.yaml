@@ -11,9 +11,6 @@ spec:
       targetRevision: HEAD
       directory:
         recurse: true
-    # - repoURL: 'https://github.com/devplatformsolutions/crossplane-config.git'
-    #   path: './resources/aws/compositions/claims'
-    #   targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: crossplane-system

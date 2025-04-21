@@ -9,19 +9,6 @@ spec:
     - repoURL: 'https://charts.crossplane.io/stable'
       chart: crossplane
       targetRevision: "1.19.1"
-    # Uncomment and customize the helm values if needed:
-    # helm:
-    #   valueFiles:
-    #     - values.yaml
-    #- repoURL: 'https://github.com/devplatformsolutions/crossplane-config.git'
-    #  path: './providers/aws'
-    #  targetRevision: HEAD
-    #- repoURL: 'https://github.com/devplatformsolutions/crossplane-config.git'
-    #  path: './resources/aws/config'
-    #  targetRevision: HEAD
-    #- repoURL: 'https://github.com/devplatformsolutions/crossplane-config.git'
-    #  path: './resources/aws/compositions/xrd'
-    #  targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: crossplane-system
